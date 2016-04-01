@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.conf.urls import include
-from blog.views import *
+
+from .views import *
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^blog/',include('blog.urls')),
+	url(r'^$',index),
+	url(r'^latest_5$',latest_5),
+	# url(r'^single/(?P<post_id>[0-9]+)$',single),
+
 ]

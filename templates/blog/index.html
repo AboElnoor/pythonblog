@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+</head>
+<body>
+<h2>Hello to my Blog</h2>
+<ul>
+	{% for post in posts %}
+		<li>
+		
+		<a href='single.html'><h3>{{ post.title }}</h3></a>
+		<br/>
+		{{post.atricle_content}}
+
+		</li>
+	{% endfor %}
+</ul>
+<a href='latest_5'><h2>Latest Posts</h2></a>	
+</body>
+</html>
