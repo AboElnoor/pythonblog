@@ -6,7 +6,7 @@ class User(models.Model):
 	user_name = models.CharField(max_length=200)
 	email = models.EmailField(max_length=200)
 	password = models.CharField(max_length=200)
-	user_image = models.ImageField(upload_to='userimages/')
+	user_image = models.ImageField(upload_to='userimages/', blank=True)
 	role = models.IntegerField()
 	is_active = models.BooleanField(default=False)
 
@@ -22,7 +22,7 @@ class Article(models.Model):
 	is_published = models.BooleanField(default=False)
 	user_id = models.ForeignKey(User,on_delete=models.CASCADE)
 	article_view = models.IntegerField()
-	article_mark = models.ManyToManyField(User, related_name="user_mark")
+	article_mark = models.ManyToManyField(User, related_name="user_mark", blank=True)
 
 	def __str__(self):
 		return self.title
@@ -31,8 +31,11 @@ class Comment(models.Model):
 	comment_content = models.TextField()
 	is_verified = models.BooleanField(default=False)
 	user_id = models.ForeignKey(User, related_name="user_comment",on_delete=models.CASCADE)
-	reply = models.ForeignKey('self')
-	comment_like = models.ManyToManyField(User)
+	reply = models.ForeignKey('self', null=True, blank=True)
+	comment_like = models.ManyToManyField(User, blank=True)
+
+	def __str__(self):
+		return self.comment_content
 
 class Tag(models.Model):
 	tag_name = models.CharField(max_length=200)
