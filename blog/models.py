@@ -55,6 +55,8 @@ class BandWords(models.Model):
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)
     age= models.IntegerField()
+    user_image = models.ImageField(blank=True)
 
   #   def __str__(self):
-		# return self.user
+		# return self.age
+
