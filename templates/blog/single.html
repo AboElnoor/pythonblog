@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Latest Posts</title>
+	<title>Single Post</title>
 </head>
 <body>
-<h2></h2>
-<ul>
-	{% for p in single_post %}
-		<li>
+<h2>About the post</h2>
 		
-		<h3>{{p.title }}</h3>
+		<h3>{{ posts.title }}</h3>
 		<br/>
-		{{p.atricle_content}}
+		{{ posts.atricle_content }}
 
-		</li>
-	{% endfor %}
-</ul>
 </body>
 </html>

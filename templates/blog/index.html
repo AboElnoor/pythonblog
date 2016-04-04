@@ -1,17 +1,31 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Home Page</title>
+	
+	<script type="text/javascript" src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 </head>
 <body>
 <h2>Hello to my Blog</h2>
+
+<div class="container"> 
+           <span class="glyphicon glyphicon-home icon"></span>
+           <span class="current icon" >Home</span>    
+        </div>
 <ul>
+	
 	{% for post in posts %}
 		<li>
 		
-		<a href='single.html'><h3>{{ post.title }}</h3></a>
+		<a href= "single/{{post.id}}"><h3>{{ post.title }}</h3></a>
 		<br/>
 		{{post.atricle_content}}
+		<!-- {{post.image}} -->
+
+		 <img src="{% static 'images/post.image' %}" alt="image" height="200px"> 
 
 		</li>
 	{% endfor %}

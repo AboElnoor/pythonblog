@@ -21,6 +21,5 @@ from .views import *
 urlpatterns = [
 	url(r'^$',index),
 	url(r'^latest_5$',latest_5),
-	# url(r'^single/(?P<post_id>[0-9]+)$',single),
-
+	url(r'^single/(?P<post_id>[0-9]+)/$',single),
 ]
