@@ -19,6 +19,12 @@ def single(request,post_id):
 	single = Article.objects.get(pk=post_id)
 	data = {'posts':single}
 	return render(request,'blog/single.html',data)
+def register(request):		
+
+	return render(request,'blog/register.html')
+def login(request):		
+
+	return render(request,'blog/login.html')
 
 
 

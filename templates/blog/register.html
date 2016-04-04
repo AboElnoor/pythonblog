@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Regestration</title>
+	
+	<script type="text/javascript" src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+</head>
+<body>
+
+<div class='row'></div>
+<div class='row'>
+<div class='col-md-2'></div>
+<div class='col-md-6'>
+	<h2 class='col-md-12 text-primary'><i class='glyphicon glyphicon-user'></i><i class='glyphicon glyphicon-user'></i> Registeration...</h2>
+
+	<form role='form' class='form-horizontal col-md-12' action='register.php' method='post'>
+		<div class='form-group has-warning'>
+			<label class='col-md-2'>name</label>
+			<div class='col-md-10 input-group'>
+				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+				<input placeholder='Username' class='form-control' name='username' />
+			</div>
+		</div>	
+		<div class='form-group has-warning'>
+			<label class='col-md-2'>Email</label>
+			<div class='col-md-10 input-group'>
+				<span class='input-group-addon'>@</span>
+				<input placeholder='Email' class='form-control' name='email' type='email' />
+			</div>
+		</div>
+		<div class='form-group has-warning'>
+			<label class='col-md-2'>Password</label>
+			<div class='col-md-10 input-group'>
+				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+				<input placeholder='Password' class='form-control' name='password' type='password' />
+			</div>
+		</div>	
+		<div class='form-group has-warning'>
+			<label class='col-md-2'>Re-Password</label>
+			<div class='col-md-10 input-group'>
+				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+				<input placeholder='RePassword' class='form-control' name='rpassword' type='password' />
+			</div>
+		</div>	
+		</br>
+		<span class='col-md-2'></span>
+		<input type='submit' class="btn btn-primary btn-sm" name='ok' value='Register' />
+		<input type='button' class="btn btn-primary btn-md" name='ok' value='Register with facebook' />
+		
+	</form>	
+</div>
+<div class='col-md-2'></div>
+</div>
+
+
+</body>
+</html>
