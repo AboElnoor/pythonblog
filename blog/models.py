@@ -7,7 +7,7 @@ class NewUser(models.Model):
 	user_name = models.CharField(max_length=200)
 	email = models.EmailField(max_length=200)
 	password = models.CharField(max_length=200)
-	user_image = models.ImageField(upload_to='images', blank=True)
+	user_image = models.ImageField()
 	role = models.IntegerField()
 	is_active = models.BooleanField(default=False)
 
@@ -18,7 +18,7 @@ class NewUser(models.Model):
 class Article(models.Model):
 	title = models.CharField(max_length=200)
 	atricle_content = models.TextField()
-	image = models.ImageField(upload_to='images')
+	image = models.ImageField()
 	publish_date = models.DateTimeField(null=True)
 	is_published = models.BooleanField(default=False)
 	user_id = models.ForeignKey(User,on_delete=models.CASCADE)

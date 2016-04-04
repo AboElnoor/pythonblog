@@ -25,7 +25,7 @@
 		{{post.atricle_content}}
 		<!-- {{post.image}} -->
 
-		 <img src="{% static 'images/post.image' %}" alt="image" height="200px"> 
+		 <img src="{{ post.image.url }}" alt="image" height="200px"> 
 
 		</li>
 	{% endfor %}
