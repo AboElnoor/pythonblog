@@ -6,7 +6,7 @@ class User(models.Model):
 	user_name = models.CharField(max_length=200)
 	email = models.EmailField(max_length=200)
 	password = models.CharField(max_length=200)
-	user_image = models.ImageField(upload_to='userimages/', blank=True)
+	user_image = models.ImageField(upload_to='images/', blank=True)
 	role = models.IntegerField()
 	is_active = models.BooleanField(default=False)
 
@@ -21,7 +21,7 @@ class Article(models.Model):
 	publish_date = models.DateTimeField(null=True)
 	is_published = models.BooleanField(default=False)
 	user_id = models.ForeignKey(User,on_delete=models.CASCADE)
-	article_view = models.IntegerField()
+	article_view = models.IntegerField(blank=True, null=True)
 	article_mark = models.ManyToManyField(User, related_name="user_mark", blank=True)
 
 	def __str__(self):
