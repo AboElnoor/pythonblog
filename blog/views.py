@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
-from django.core.context_processors import csrf
 
 
 def index(request):		
