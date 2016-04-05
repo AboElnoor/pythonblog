@@ -24,4 +24,8 @@ urlpatterns = [
 	url(r'^single/(?P<post_id>[0-9]+)/$',single),
     url(r'^registe$',register),
     url(r'^login$',login),
+    url(r'^signin$',signin),
+    url(r'^loggedin$',loggedin),
+    url(r'^invalid$',invalid),
+    url(r'^logout_view$',logout_view),
 ]

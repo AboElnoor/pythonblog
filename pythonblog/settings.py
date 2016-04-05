@@ -104,10 +104,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+FACEBOOK_APP_ID='1741068429512159'
+FACEBOOK_API_SECRET='0966174fe7183866032b06be11655a04'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+)
 
 
 # Internationalization

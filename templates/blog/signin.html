@@ -17,7 +17,8 @@
 <div class='col-md-6'>
 	<h2 class='col-md-12 text-primary'><i class='glyphicon glyphicon-user'></i><i class='glyphicon glyphicon-user'></i> Login...</h2>
 
-	<form role='form' class='form-horizontal col-md-12' action='register.php' method='post'>
+	<form role='form' class='form-horizontal col-md-12' action='signin' method='post'>
+		{% csrf_token %}
 		<div class='form-group has-warning'>
 			<label class='col-md-2'>name</label>
 			<div class='col-md-10 input-group'>
