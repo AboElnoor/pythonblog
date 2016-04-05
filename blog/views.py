@@ -1,7 +1,17 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+<<<<<<< HEAD
 from .models import Article,Comment 
+=======
+from .models import Article,Comment
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
+from django.core.context_processors import csrf
+>>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79
 
 
 def index(request):		
@@ -22,9 +32,44 @@ def single(request,post_id):
 def register(request):		
 
 	return render(request,'blog/register.html')
+<<<<<<< HEAD
 def login(request):		
 
 	return render(request,'blog/login.html')
 
 
 
+=======
+
+def login(request):
+	c = {}
+	c.update(csrf(request))
+	return render(request, 'blog/signin.html', c)
+	
+def signin(request):
+	username = request.POST.get('username','')
+	password = request.POST.get('password','')
+	user = authenticate(username=username, password=password)
+
+	if user is not None:
+		auth_login(request, user)
+		# return HttpResponse('User is valid, active and authenticated')
+		return HttpResponseRedirect('loggedin')
+	else:
+		return HttpResponseRedirect('invalid')
+		# return HttpResponse("Invalid Pass or username")
+		print ("fatma")
+
+	# return render(request,'blog/signin.html')
+
+def loggedin(request):
+	return render(request, 'blog/loggedin.html')
+
+def invalid(request):
+	return render(request, 'blog/invalid.html')
+
+def logout_view(request):
+	logout(request)
+	return render(request,'blog/logout_view.html')
+	# return HttpResponse("You are loggedout")
+>>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79

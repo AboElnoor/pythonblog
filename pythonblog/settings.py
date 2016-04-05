@@ -104,11 +104,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+<<<<<<< HEAD
+=======
+FACEBOOK_APP_ID='1741068429512159'
+FACEBOOK_API_SECRET='0966174fe7183866032b06be11655a04'
+
+>>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     
 ]
 
+<<<<<<< HEAD
+=======
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+)
+
+>>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
