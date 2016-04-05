@@ -1,17 +1,12 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
-<<<<<<< HEAD
-from .models import Article,Comment 
-=======
 from .models import Article,Comment
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.core.context_processors import csrf
->>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79
 
 
 def index(request):		
@@ -32,14 +27,6 @@ def single(request,post_id):
 def register(request):		
 
 	return render(request,'blog/register.html')
-<<<<<<< HEAD
-def login(request):		
-
-	return render(request,'blog/login.html')
-
-
-
-=======
 
 def login(request):
 	c = {}
@@ -72,4 +59,3 @@ def logout_view(request):
 	logout(request)
 	return render(request,'blog/logout_view.html')
 	# return HttpResponse("You are loggedout")
->>>>>>> 8817bb3f2d6b76d8f758bca09504e256f0cfac79
