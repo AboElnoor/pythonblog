@@ -113,9 +113,9 @@ STATICFILES_DIRS = [
     
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.facebook.FacebookBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'social_auth.backends.facebook.FacebookBackend',
+# )
 
 
 # Internationalization
