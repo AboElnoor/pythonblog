@@ -22,7 +22,7 @@ urlpatterns = [
 	url(r'^$',index),
 	url(r'^latest_5$',latest_5),
 	url(r'^single/(?P<post_id>[0-9]+)/$',single),
-    url(r'^registe$',register),
+    url(r'^register$',register),
     url(r'^login$',login),
     url(r'^signin$',signin),
     url(r'^loggedin$',loggedin),
