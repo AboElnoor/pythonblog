@@ -49,6 +49,7 @@
         {% endif %}
         {% endblock %}
         {% block nav-global %}{% endblock %}
+
     </div>
     <!-- END Header -->
     {% block breadcrumbs %}
@@ -58,7 +59,10 @@
     </div>
     {% endblock %}
     {% endif %}
-
+    <!--{% if has_permission %}-->
+        <!--<div id="side-bar">-->
+        <!--</div>-->
+    <!--{% endif %}-->
     {% block messages %}
         {% if messages %}
         <ul class="messagelist">{% for message in messages %}
@@ -69,8 +73,52 @@
 
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% if has_permission %}
+        <div id="side-bar">
+            {% block side-bar %}
+                <div id="side-cont">
+                    <div class="module">
+                        <table>
+                            <caption>
+                                <a href="/admin/blog/article/" class="section">Articles</a>
+                            </caption>
+                            <tbody>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="/admin/blog/article/add/">Add new Article</a></th>
+                                </tr>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="/admin/blog/article/">List all Articles</a></th>
+                                </tr>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="#">View Pending Posts</a></th>
+                                </tr>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="#">Control Tags</a></th>
+                                </tr>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="#">Control Banned Words</a></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <caption>
+                                <a href="/admin/blog/userprofile/" class="section">Users</a>
+                            </caption>
+                            <tbody>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="/admin/blog/userprofile/add/">Add new User</a></th>
+                                </tr>
+                                <tr class="model-group">
+                                    <th scope="row"><a href="/admin/blog/userprofile/">List all Users</a></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        {% endif %}
         {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
         {% block content %}
         {% block object-tools %}{% endblock %}
         {{ content }}
