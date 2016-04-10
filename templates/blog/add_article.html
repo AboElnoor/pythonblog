@@ -5,9 +5,10 @@
 </head>
 <body>
 <h2> Hello {{request.user.username}}</h2>
-<a href="logout_view"> Logout </a>
-</br>
-<a href="{{request.user.id}}/add_article">Add Article</a>
+<form action="add_article" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
 </form>
 </body>
 </html>

@@ -38,7 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'social.apps.django_app.default',
 ]
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 3600
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,7 +61,12 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
+
+ # KEEP_LOGGED_KEY = 'keep_me_logged' 
+ # KEEP_LOGGED_DURATION  = 365 
 
 ROOT_URLCONF = 'pythonblog.urls'
 
@@ -86,6 +103,15 @@ DATABASES = {
 }
 
 
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'fatmasar7an@gmail.com'
+SERVER_EMAIL = 'fatmasar7an@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'fatmasar7an@gmail.com'
+EMAIL_HOST_PASSWORD = 16641029
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -104,7 +130,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 FACEBOOK_APP_ID='1741068429512159'
 FACEBOOK_API_SECRET='0966174fe7183866032b06be11655a04'
 
@@ -113,9 +138,11 @@ STATICFILES_DIRS = [
     
 ]
 
-# AUTHENTICATION_BACKENDS = (
-#     'social_auth.backends.facebook.FacebookBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+
+)
 
 
 # Internationalization
@@ -141,4 +168,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
+
+
 
