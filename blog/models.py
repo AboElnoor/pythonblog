@@ -72,8 +72,7 @@ class BannedWord(models.Model):
 
 class UserProfile(User):
     user = models.OneToOneField(User, related_name="add_info")
-    age = models.IntegerField(blank=True, null=True)
-    user_image = models.ImageField(blank=True)
+    user_image = models.ImageField(upload_to='profile_images', blank=True)
 
 signals.post_save.connect(number_of_comments, sender=Comment)
 signals.post_delete.connect(number_of_comments, sender=Comment)
