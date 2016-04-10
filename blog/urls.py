@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from .views import *
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	url(r'^$',index),
@@ -28,4 +29,12 @@ urlpatterns = [
     url(r'^loggedin$',loggedin),
     url(r'^invalid$',invalid),
     url(r'^logout_view$',logout_view),
+    url(r'^(?P<user_id>[0-9]+)/add_article$', add_article),
+    url(r'^(?P<art_id>[0-9]+)/edit_article$', edit_article),
+    url(r'^(?P<comm_id>[0-9]+)/add_comment$', add_comment),
+    url(r'^single/(?P<post_id>[0-9]+)/(?P<comm_id>[0-9]+)/edit_comment$', edit_comment),
+    url(r'^passreset/$',auth_views.password_reset,name='password_reset'),
+    url(r'^passresetdone/$',auth_views.password_reset_done,name='password_reset_done'),
+    url(r'^passresetconfirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',auth_views.password_reset_confirm,name='registration/password_reset_email.html'),
+    url(r'^passresetcomplete/$',auth_views.password_reset_complete,name='password_reset_complete'),
 ]
