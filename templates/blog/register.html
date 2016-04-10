@@ -8,8 +8,30 @@
 	<script type="text/javascript" src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	<style type="text/css">
+		.input label{
+			margin-left:20px;
+			width:100px;
+			color:#337AB7;
+
+
+		}
+		.input input{
+			margin-left:20px;
+			width:500px;
+			height:75px;
+
+		}
+		h1{
+			text-align: center;
+			color:#337AB7;
+		}
+	</style>
 </head>
 <body>
+          {% if registered %}
+       	 <strong><h1>thank you for registering!</h1></strong>
+       	 {% else %}
 
 <div class='row'></div>
 <div class='row'>
@@ -17,41 +39,20 @@
 <div class='col-md-6'>
 	<h2 class='col-md-12 text-primary'><i class='glyphicon glyphicon-user'></i><i class='glyphicon glyphicon-user'></i> Registeration...</h2>
 
-	<form role='form' class='form-horizontal col-md-12' action='register.php' method='post'>
-		<div class='form-group has-warning'>
-			<label class='col-md-2'>name</label>
-			<div class='col-md-10 input-group'>
-				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
-				<input placeholder='Username' class='form-control' name='username' />
-			</div>
-		</div>	
-		<div class='form-group has-warning'>
-			<label class='col-md-2'>Email</label>
-			<div class='col-md-10 input-group'>
-				<span class='input-group-addon'>@</span>
-				<input placeholder='Email' class='form-control' name='email' type='email' />
-			</div>
-		</div>
-		<div class='form-group has-warning'>
-			<label class='col-md-2'>Password</label>
-			<div class='col-md-10 input-group'>
-				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
-				<input placeholder='Password' class='form-control' name='password' type='password' />
-			</div>
-		</div>	
-		<div class='form-group has-warning'>
-			<label class='col-md-2'>Re-Password</label>
-			<div class='col-md-10 input-group'>
-				<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
-				<input placeholder='RePassword' class='form-control' name='rpassword' type='password' />
-			</div>
-		</div>	
-		</br>
-		<span class='col-md-2'></span>
+	<form role='form' class='form-horizontal col-md-12' id="user_form" method="post" action="/blog/register" enctype="multipart/form-data" >
+	    {% csrf_token %}
+	    <div class="input">
+	    <div class='form-group has-warning'>
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+        </div>
+        </div>
+        <span class='col-md-2'></span>
 		<input type='submit' class="btn btn-primary btn-sm" name='ok' value='Register' />
 		<input type='button' class="btn btn-primary btn-md" name='ok' value='Register with facebook' />
-		
-	</form>	
+        </form>
+        {% endif %}
+
 </div>
 <div class='col-md-2'></div>
 </div>
