@@ -32,7 +32,7 @@
             {% endblock %}
             {% block userlinks %}
                 {% if site_url %}
-                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                    <a href="/blog/">{% trans 'View site' %}</a> /
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
@@ -102,14 +102,14 @@
                         </table>
                         <table>
                             <caption>
-                                <a href="/admin/blog/userprofile/" class="section">Users</a>
+                                <a href="/admin/blog/newuser/" class="section">Users</a>
                             </caption>
                             <tbody>
                                 <tr class="model-group">
-                                    <th scope="row"><a href="/admin/blog/userprofile/add/">Add new User</a></th>
+                                    <th scope="row"><a href="/admin/blog/newuser/add/">Add new User</a></th>
                                 </tr>
                                 <tr class="model-group">
-                                    <th scope="row"><a href="/admin/blog/userprofile/">List all Users</a></th>
+                                    <th scope="row"><a href="/admin/blog/newuser/">List all Users</a></th>
                                 </tr>
                             </tbody>
                         </table>

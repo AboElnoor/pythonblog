@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 3600
 
-SITE_ID = 1
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = [
@@ -104,12 +104,12 @@ DATABASES = {
 
 
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'fatmasar7an@gmail.com'
-SERVER_EMAIL = 'fatmasar7an@gmail.com'
+DEFAULT_FROM_EMAIL = 'php.lover17@gmail.com'
+SERVER_EMAIL = 'php.lover17@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'fatmasar7an@gmail.com'
-EMAIL_HOST_PASSWORD = 16641029
+EMAIL_HOST_USER = 'php.lover17@gmail.com'
+EMAIL_HOST_PASSWORD = 'mido1634520'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Password validation
@@ -170,4 +170,5 @@ MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 
+AUTH_USER_MODEL = 'blog.NewUser'
 

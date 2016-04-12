@@ -1,4 +1,4 @@
-from blog.models import UserProfile
+from blog.models import *
 from django.contrib.auth.models import User
 from django import forms
 import datetime
@@ -14,17 +14,17 @@ class UserForm(forms.ModelForm):
         password2 = self.cleaned_data.get('password2')
         if password1 and password2:
             if password1 != password2:
-                raise forms.ValidationError(("The two password fields didn't match."))
+                raise forms.ValidationError("The two password fields didn't match.")
         return password2
 
     class Meta:
-        model = User
-        fields = ('username', 'email', 'password1','password2',)
+        model = NewUser
+        fields = ('username', 'email', 'password1','password2', 'user_image',)
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ('user_image', )
+# class NewUserForm(forms.ModelForm):
+#     class Meta:
+#         model = NewUser
+#         fields = ('user_image', )
 
 
 class ArticleForm(forms.Form):

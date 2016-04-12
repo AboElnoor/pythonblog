@@ -1,20 +1,13 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db.models import signals
 from blog.signals import number_of_comments
 
-class NewUser(models.Model):
-    user_name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200)
-    password = models.CharField(max_length=200)
-    user_image = models.ImageField()
-    role = models.IntegerField()
-    is_active = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.user_name
+class NewUser(AbstractUser):
+    user_image = models.ImageField(upload_to="profile_images", blank=True)
 
 
 class Tag(models.Model):
@@ -36,9 +29,9 @@ class Article(models.Model):
     image = models.ImageField()
     publish_date = models.DateTimeField(null=True)
     is_published = models.BooleanField(default=False)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(NewUser, on_delete=models.CASCADE)
     article_view = models.IntegerField(blank=True, null=True)
-    article_mark = models.ManyToManyField(User, related_name="user_mark", blank=True)
+    article_mark = models.ManyToManyField(NewUser, related_name="user_mark", blank=True)
     article_tag = models.ManyToManyField(Tag)
     comments_number = models.IntegerField(default=0, editable=False)
 
@@ -55,9 +48,9 @@ class Comment(models.Model):
     comment_content = models.TextField()
     is_verified = models.BooleanField(default=False)
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, related_name="user_comment", on_delete=models.CASCADE)
+    user_id = models.ForeignKey(NewUser, related_name="user_comment", on_delete=models.CASCADE)
     reply = models.ForeignKey('self', null=True, blank=True)
-    comment_like = models.ManyToManyField(User, blank=True)
+    comment_like = models.ManyToManyField(NewUser, blank=True)
 
     def __str__(self):
         return self.comment_content
@@ -69,10 +62,6 @@ class BannedWord(models.Model):
     def __str__(self):
         return self.word
 
-
-class UserProfile(User):
-    user = models.OneToOneField(User, related_name="add_info")
-    user_image = models.ImageField(upload_to="profile_images", blank=True)
 
 signals.post_save.connect(number_of_comments, sender=Comment)
 signals.post_delete.connect(number_of_comments, sender=Comment)
